@@ -6,11 +6,15 @@ pipeline {
     }
 
     stages {
+
+        environment{
+            scannerHome = tool "${SONARSCANNER}"
+        }
         stage('TESTING SONAR_ANALYSIS') {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
                     sh """
-                        "${SONARSCANNER}"/bin/sonar-scanner \
+                        "${scannerHome}"/bin/sonar-scanner \
                         -Dsonar.projectKey=klll \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://13.235.244.108:9000 \
