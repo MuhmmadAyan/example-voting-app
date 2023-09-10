@@ -3,7 +3,7 @@ pipeline {
     environment {
         SONARSERVER = 'sserver'
         SONARSCANNER = 'sonar'
-        registryv = "mohamadayan/vote"
+        registryv = "mohammadayan/vote"
         registryw = "mohammadayan/worker"
         registryr = "mohammadayan/result"
         registrys = "mohammadayan/seeddata"
