@@ -55,11 +55,11 @@ pipeline {
             script{
                 docker.withRegistryv( '', registryCredential ) {
                 dockerImage1.push("$BUILD_NUMBER")
-                dockerImag1e1.push('latest')
+                dockerImage1.push('latest')
                 }
                 docker.withRegistryw( '', registryCredential ) {
                 dockerImage2.push("$BUILD_NUMBER")
-                dockerImag2.push('latest')
+                dockerImage2.push('latest')
                 }
                 docker.withRegistryr( '', registryCredential ) {
                 dockerImage3.push("$BUILD_NUMBER")
@@ -67,7 +67,7 @@ pipeline {
                 }
                 docker.withRegistrys( '', registryCredential ) {
                 dockerImage4.push("$BUILD_NUMBER")
-                dockerImage14.push('latest')
+                dockerImage4.push('latest')
                 }
             }
         }
