@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('TESTING SONAR_ANALYSIS') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv("${SONARSERVER}") {
                     sh """
-                        ${env.SONARSCANNER}/bin/sonar-scanner \
+                        "${SONARSCANNER}"/bin/sonar-scanner \
                         -Dsonar.projectKey=klll \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://13.235.244.108:9000 \
