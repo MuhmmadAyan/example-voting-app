@@ -1,16 +1,20 @@
 pipeline {
     
 	agent any
+    environment {
+        SONARSERVER = 'sserver'
+        SONARSCANNER = 'sonar'
+    }
 
     stages{
         
         stage('TESTING SONAR_ANALYSIS'){
             steps {
             environment {
-             scannerHome = tool 'sonar'
+             scannerHome = tool "${SONARSCANNER}"
           }
            
-               withSonarQubeEnv('sserver') {
+               withSonarQubeEnv("${SONARSERVER}") {
              sh '''${scannerHome}/bin/sonar-scanner \
              -Dsonar.projectKey=project \
              -Dsonar.sources=. \
