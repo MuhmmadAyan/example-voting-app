@@ -50,7 +50,6 @@ pipeline {
         }
         stage('pushing images to dockerhub'){
 
-        
         steps{
             script{
                 docker.withRegistry( '', registryCredential ) {
@@ -73,7 +72,7 @@ pipeline {
         }
 }
         stage('Removing built DockerImages from jenkins'){
-            stage{
+            steps{
                 script{
                     sh 'docker rmi $registry:$BUILD_NUMBER'
                 }
