@@ -6,9 +6,7 @@ pipeline {
         maven "maven3"
     }
 */	
-    environment {
 
-    }
 	
     stages{
         
