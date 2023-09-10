@@ -74,7 +74,7 @@ pipeline {
         stage('Removing built DockerImages from jenkins'){
             steps{
                 script{
-                    sh "docker rmi -f$(docker images -q)"
+                    sh 'docker rmi -f$(docker images -q)'
                     
                 }
             }
