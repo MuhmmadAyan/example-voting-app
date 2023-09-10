@@ -8,22 +8,15 @@ pipeline {
     stages {
         stage('TESTING SONAR_ANALYSIS') {
             steps {
-                script {
-                    def scannerHome = tool "${SONARSCANNER}"
-
-                    withEnv(["PATH+SONAR=${scannerHome}/bin"]) {
-                        withSonarQubeEnv('SonarQube Server') {
-                            sh '''sonar-scanner \
-                                -Dsonar.projectKey=project \
-                                -Dsonar.sources=. \
-                                -Dsonar.host.url=http://13.235.244.108:9000 \
-                                -Dsonar.login=sqp_58d710c5df0d32aa143ad1933292b3670c25b2ad '''
-                        }
-                    }
-
-                    timeout(time: 1, unit: 'HOURS') {
-                        waitForQualityGate abortPipeline: true
-                    }
+                withSonarQubeEnv('SonarQube') {
+                    sh """
+                        ${env.SONARSCANNER}/bin/sonar-scanner \
+                        -Dsonar.projectKey=klll \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://13.235.244.108:9000 \
+                        -Dsonar.token=sqp_f6b3f16f6ae55b0c3284457946dbd38601439867
+                         
+                    """
                 }
             }
         }
