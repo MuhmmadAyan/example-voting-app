@@ -26,7 +26,7 @@ pipeline {
         stage('QG checking') {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate bortPipeline: true
+                    waitForQualityGate abortPipeline: true
                     
                 }
             }
