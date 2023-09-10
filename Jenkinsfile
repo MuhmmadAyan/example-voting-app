@@ -6,19 +6,16 @@ pipeline {
         
         stage('TESTING SONAR_ANALYSIS'){
             steps {
-                environment {
-             scannerHome = tool 'sonar-server'
+            environment {
+            scannerHome = tool 'sonar-server'
           }
            
-               withSonarQubeEnv('sonar-pro') {
-               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                   -Dsonar.projectName=vprofile-repo \
-                   -Dsonar.projectVersion=1.0 \
-                   -Dsonar.sources=src/ \
-                   -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
-                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
-                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
-                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+               withSonarQubeEnv('sonar-server') {
+               sh '''${scannerHome}/bin/sonar-scanner sonar-scanner \
+            -Dsonar.projectKey=project \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=http://13.235.244.108:9000 \
+            -Dsonar.token=sqp_694a2edcfa170fc0cd1555c13e8faf559fe7f76f'''
 
             }
             
