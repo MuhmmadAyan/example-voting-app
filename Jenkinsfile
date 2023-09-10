@@ -9,15 +9,16 @@ pipeline {
         stage('TESTING SONAR_ANALYSIS') {
             steps {
                 script {
-                    def scannerHome = tool "${SONARSCANNER}"
+                    withSonarQubeEnv('SonarQube Server') {
+                        def scannerHome = tool "${SONARSCANNER}"
 
-                    withEnv(["PATH+SONAR=${scannerHome}/bin"]) {
-                        sh '''sonar-scanner \
-                               -Dsonar.projectKey=project \
-                               -Dsonar.sources=. \
-                               -Dsonar.host.url=http://13.235.244.108:9000 \
-                               -Dsonar.login=sqp_58d710c5df0d32aa143ad1933292b3670c25b2ad '''
-                        
+                        withEnv(["PATH+SONAR=${scannerHome}/bin"]) {
+                            sh '''sonar-scanner \
+                                   -Dsonar.projectKey=project \
+                                   -Dsonar.sources=. \
+                                   -Dsonar.host.url=http://13.235.244.108:9000 \
+                                   -Dsonar.login=sqp_58d710c5df0d32aa143ad1933292b3670c25b2ad '''
+                        }
                     }
                     timeout(time: 1, unit: 'HOURS') {
                         waitForQualityGate abortPipeline: true
