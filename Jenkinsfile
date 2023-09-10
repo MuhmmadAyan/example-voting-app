@@ -19,17 +19,16 @@ pipeline {
                                -Dsonar.login=sqp_58d710c5df0d32aa143ad1933292b3670c25b2ad '''
                         
                     }
+                    timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
 
-        stage('QG checking') {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
+
                     
                 }
             }
         }
-    }
-}
+    
+
