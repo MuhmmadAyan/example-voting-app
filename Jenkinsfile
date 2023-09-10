@@ -48,25 +48,29 @@ pipeline {
                 }
             }
         }
+        stage{
+
+        
         steps{
             script{
                 docker.withRegistryv( '', registryCredential ) {
                 dockerImage1.push("$BUILD_NUMBER")
                 dockerImag1e1.push('latest')
-                
+                }
                 docker.withRegistryw( '', registryCredential ) {
                 dockerImage2.push("$BUILD_NUMBER")
                 dockerImag2.push('latest')
-
+                }
                 docker.withRegistryr( '', registryCredential ) {
                 dockerImage3.push("$BUILD_NUMBER")
                 dockerImage3.push('latest')
-
+                }
                 docker.withRegistrys( '', registryCredential ) {
                 dockerImage4.push("$BUILD_NUMBER")
                 dockerImage14.push('latest')
-
+                }
             }
         }
+}
 }
 }
