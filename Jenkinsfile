@@ -39,10 +39,10 @@ pipeline {
         stage('building docker images'){
             steps{
             script{
-                    dockerImage1 = docker.build registryv + ":$BUILD_NUMBER" , context : 'vote/'
-                  //  dockerImage2 = docker.build registryw + ":$BUILD_NUMBER", context: 'worker'
-                  //  dockerImage3 = docker.build registryr + ":$BUILD_NUMBER", context: 'result'
-                   // dockerImage4 = docker.build registrys + ":$BUILD_NUMBER", context: 'seed-data'
+                    dockerImage1 = docker.build registryv + ":$BUILD_NUMBER", "./vote"
+                    dockerImage2 = docker.build registryw + ":$BUILD_NUMBER", "./worker"
+                    dockerImage3 = docker.build registryr + ":$BUILD_NUMBER", "./result"
+                    dockerImage4 = docker.build registrys + ":$BUILD_NUMBER", "./seed-data"
 
 
                 }
