@@ -10,14 +10,14 @@ pipeline {
         registryCredential = 'dockerhub'
     }
     stages {
-        stage('Setup') {
+        stage('Initial Setup') {
             steps {
                 script {
                     scannerHome = tool "${SONARSCANNER}"
                 }
             }
         }
-        stage('TESTING SONAR_ANALYSIS') {
+        stage('Sonar Analysis and Quality Gates') {
             steps {
                 script {
                     withSonarQubeEnv("${SONARSERVER}") {
@@ -36,7 +36,7 @@ pipeline {
             }
         }
     }
-        stage('building docker images'){
+        stage('Building Docker Images'){
             steps{
             script{
                     dockerImage1 = docker.build registryv + ":$BUILD_NUMBER", "./vote"
@@ -48,7 +48,7 @@ pipeline {
                 }
             }
         }
-        stage('pushing images to dockerhub'){
+        stage('Pushing Images to DockerHub'){
 
         steps{
             script{
@@ -71,7 +71,7 @@ pipeline {
             }
         }
 }
-        stage('Removing built DockerImages from jenkins'){
+        stage('Removing Build DockerImages From Jenkins'){
             steps{
                 script{
                     sh 'docker rmi -f $(docker images -q)'
