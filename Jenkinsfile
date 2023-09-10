@@ -12,7 +12,7 @@ pipeline {
         }
         stage('TESTING SONAR_ANALYSIS') {
             steps {
-                withSonarQubeEnv("${SONARSERVER}") {
+                withSonarQubeEnv('sonar') {
                     sh """
                         "${scannerHome}"/bin/sonar-scanner \
                         -Dsonar.projectKey=klll \
