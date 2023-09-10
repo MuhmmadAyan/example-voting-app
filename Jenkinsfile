@@ -7,10 +7,10 @@ pipeline {
         stage('TESTING SONAR_ANALYSIS'){
             steps {
             environment {
-            def scannerHome = tool 'sonar-scanner'
+             scannerHome = tool 'sonar'
           }
            
-               withSonarQubeEnv('sonar-server') {
+               withSonarQubeEnv('sserver') {
              sh '''${scannerHome}/bin/sonar-scanner \
              -Dsonar.projectKey=project \
              -Dsonar.sources=. \
