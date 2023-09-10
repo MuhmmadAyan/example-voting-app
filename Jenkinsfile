@@ -40,8 +40,6 @@ pipeline {
             steps{
             script{
                     dockerImage1 = docker.build registryv + ":$BUILD_NUMBER", "./vote"
-                    dockerImage1.push("$BUILD_NUMBER")
-                    dockerImage1.push('latest')
                     dockerImage2 = docker.build registryw + ":$BUILD_NUMBER", "./worker"
                     dockerImage3 = docker.build registryr + ":$BUILD_NUMBER", "./result"
                     dockerImage4 = docker.build registrys + ":$BUILD_NUMBER", "./seed-data"
@@ -50,29 +48,29 @@ pipeline {
                 }
             }
         }
-        /*stage('pushing images to dockerhub'){
+        stage('pushing images to dockerhub'){
 
         
         steps{
             script{
-                docker.withRegistryv( '', registryCredential ) {
+                docker.withRegistry( '', registryCredential ) {
                 dockerImage1.push("$BUILD_NUMBER")
                 dockerImage1.push('latest')
                 }
-                docker.withRegistryw( '', registryCredential ) {
+                docker.withRegistry( '', registryCredential ) {
                 dockerImage2.push("$BUILD_NUMBER")
                 dockerImage2.push('latest')
                 }
-                docker.withRegistryr( '', registryCredential ) {
+                docker.withRegistry( '', registryCredential ) {
                 dockerImage3.push("$BUILD_NUMBER")
                 dockerImage3.push('latest')
                 }
-                docker.withRegistrys( '', registryCredential ) {
+                docker.withRegistry( '', registryCredential ) {
                 dockerImage4.push("$BUILD_NUMBER")
                 dockerImage4.push('latest')
                 }
             }
         }
-}*/
+}
 }
 }
