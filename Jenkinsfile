@@ -12,22 +12,24 @@ pipeline {
                     def scannerHome = tool "${SONARSCANNER}"
 
                     withEnv(["PATH+SONAR=${scannerHome}/bin"]) {
-                        script {
-                            withSonarQubeEnv('SonarQube Server') {
-                                sh '''sonar-scanner \
-                                    -Dsonar.projectKey=project \
-                                    -Dsonar.sources=. \
-                                    -Dsonar.host.url=http://13.235.244.108:9000 \
-                                    -Dsonar.login=sqp_58d710c5df0d32aa143ad1933292b3670c25b2ad '''
-                            }
-                        }
+                        sh '''sonar-scanner \
+                               -Dsonar.projectKey=project \
+                               -Dsonar.sources=. \
+                               -Dsonar.host.url=http://13.235.244.108:9000 \
+                               -Dsonar.login=sqp_58d710c5df0d32aa143ad1933292b3670c25b2ad '''
+                        
                     }
-
+                }
                     timeout(time: 1, unit: 'HOURS') {
-                        waitForQualityGate abortPipeline: true
-                    }
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
-    }
-}
+
+
+                    
+                }
+            }
+        
+    
+
