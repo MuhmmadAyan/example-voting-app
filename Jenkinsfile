@@ -15,7 +15,7 @@ pipeline {
         stage('TESTING SONAR_ANALYSIS') {
             steps {
                 script {
-                    withSonarQubeEnv('sonar') {
+                    withSonarQubeEnv("${SONARSERVER}") {
                         sh """
                             "${scannerHome}"/bin/sonar-scanner \
                             -Dsonar.projectKey=klll \
