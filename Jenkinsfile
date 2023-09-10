@@ -38,7 +38,7 @@ pipeline {
     }
         stage('building docker images'){
             steps{
-                script{
+            
                     dockerImage1 = docker.build registryv + ":$BUILD_NUMBER", context: 'vote/Dockerfile'
                     dockerImage2 = docker.build registryw + ":$BUILD_NUMBER", context: 'worker/Dockerfile'
                     dockerImage3 = docker.build registryr + ":$BUILD_NUMBER", context: 'result/Dockerfile'
@@ -48,5 +48,4 @@ pipeline {
                 }
             }
         }
-}
 }
