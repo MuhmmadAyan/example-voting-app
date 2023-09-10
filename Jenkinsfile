@@ -74,10 +74,8 @@ pipeline {
         stage('Removing built DockerImages from jenkins'){
             steps{
                 script{
-                    sh "docker rmi $registryv:$BUILD_NUMBER"
-                    sh "docker rmi $registryw:$BUILD_NUMBER"
-                    sh "docker rmi $registrys:$BUILD_NUMBER"
-                    sh "docker rmi $registryr:$BUILD_NUMBER"
+                    sh "docker rmi -f$(docker images -q)"
+                    
                 }
             }
         }
