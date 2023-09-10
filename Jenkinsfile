@@ -7,7 +7,7 @@ pipeline {
         stage('TESTING SONAR_ANALYSIS'){
             steps {
                 
-            withSonarQubeEnv('sonar-server') {
+           
                 sh ''' /home/ubuntu/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
                 -Dsonar.projectKey=vote \
                 -Dsonar.sources=. \
@@ -19,4 +19,3 @@ pipeline {
             }
         }
     }
-}
