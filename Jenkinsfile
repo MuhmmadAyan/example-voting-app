@@ -4,11 +4,11 @@ pipeline {
         SONARSERVER = 'sserver'
         SONARSCANNER = 'sonar'
     }
-
     stages {
-
-        environment{
-            scannerHome = tool "${SONARSCANNER}"
+        stage('Setup') {
+            steps {
+                scannerHome = tool "${SONARSCANNER}"
+            }
         }
         stage('TESTING SONAR_ANALYSIS') {
             steps {
@@ -19,10 +19,10 @@ pipeline {
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://13.235.244.108:9000 \
                         -Dsonar.token=sqp_f6b3f16f6ae55b0c3284457946dbd38601439867
-                         
                     """
                 }
             }
         }
     }
 }
+
