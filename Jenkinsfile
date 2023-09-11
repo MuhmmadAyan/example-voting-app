@@ -87,7 +87,7 @@ pipeline {
             agent { label 'eks-controller'}
             steps{
                 script{
-                    sh 'cd /cd home/ubuntu/example-voting-app/k8s-specifications/'
+                    sh 'cd /home/ubuntu/example-voting-app/k8s-specifications/'
                     sh 'kubectl delete all --all'
                     sh 'git pull' 
                     sh 'kubectl create -f /home/ubuntu/example-voting-app/k8s-specifications/kubernetes/'
