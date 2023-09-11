@@ -88,9 +88,9 @@ pipeline {
             steps{
                 script{
                     sh 'kubectl delete all --all'
-                    sh 'rm -rf /home/ubuntu/example-voting-app'
-                    sh 'git clone https://github.com/MuhmmadAyan/example-voting-app.git' 
-                    sh 'kubectl create -f /home/ubuntu/example-voting-app/k8s-specifications/kubernetes/'
+                    sh 'rm -rf /home/ubuntu/project'
+                    sh 'git clone https://github.com/MuhmmadAyan/example-voting-app.git /home/ubuntu/project' 
+                    sh 'kubectl create -f /home/ubuntu/project/k8s-specifications/kubernetes/'
                 }
             }
         }
