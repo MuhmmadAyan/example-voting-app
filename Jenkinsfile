@@ -79,5 +79,14 @@ pipeline {
                 }
             }
         }
+        stage('Deploying Images on EKS cluster'{
+            steps{
+                script{
+                 
+                sh ''
+
+                }
+            }
+        })
 }
 }
