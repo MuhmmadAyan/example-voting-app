@@ -83,7 +83,7 @@ pipeline {
             steps{
                 script{
                  
-                sh ''
+                sh 'kubectl create -f k8s-specifications/'
 
                 }
             }
