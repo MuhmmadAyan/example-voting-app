@@ -23,10 +23,10 @@ pipeline {
                     withSonarQubeEnv("${SONARSERVER}") {
                         sh """
                             "${scannerHome}"/bin/sonar-scanner \
-                            -Dsonar.projectKey=klll \
+                            -Dsonar.projectKey=Voting-App \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://13.235.244.108:9000 \
-                            -Dsonar.token=sqp_f6b3f16f6ae55b0c3284457946dbd38601439867
+                            -Dsonar.host.url=http://13.233.111.148:9000 \
+                            -Dsonar.token=sqp_96442758c0a6472f6faf110ddb7a210abc9b406d
                         """
                         
                     }
