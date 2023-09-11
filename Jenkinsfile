@@ -79,12 +79,10 @@ pipeline {
                 }
             }
         }
-        stage('Deploying Images on EKS cluster'){
+        stage('Deploying Images to EKS cluster'){
             steps{
                 script{
-                 
-                sh 'kubectl create -f k8s-specifications/'
-
+                    sh 'kubectl create -f example-voting-app/k8s-specifications/'
                 }
             }
         }
