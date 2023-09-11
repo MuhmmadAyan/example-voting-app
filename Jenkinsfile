@@ -83,7 +83,7 @@ pipeline {
             agent { label 'eks-controller'}
             steps{
                 script{
-                    sh 'kubectl create -f /home/ubuntu/example-voting-app/k8s-specifications/kubernetes'
+                    sh 'kubectl create -f /home/ubuntu/example-voting-app/k8s-specifications/kubernetes/'
                 }
             }
         }
