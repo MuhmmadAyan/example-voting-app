@@ -80,6 +80,7 @@ pipeline {
             }
         }
         stage('Deploying Images to EKS cluster'){
+            agent { label 'eks-controller'}
             steps{
                 script{
                     sh 'kubectl create -f example-voting-app/k8s-specifications/'
