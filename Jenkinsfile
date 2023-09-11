@@ -79,7 +79,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploying Images on EKS cluster'{
+        stage('Deploying Images on EKS cluster'){
             steps{
                 script{
                  
@@ -88,6 +88,6 @@ pipeline {
                 }
             }
         }
-        )
+        
 }
 }
